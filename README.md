@@ -1,4 +1,6 @@
 # cppWebserver
-Fork from [30天自制C++服务器](github.com/yuesong-feng/30dayMakeCppServer) 
+Fork from [30天自制C++服务器](https://github.com/yuesong-feng/30dayMakeCppServer) 
 
-**代码基本一样**  注释得更详细
+**代码基本一样**  注释得更详细，小白友好
+
+
