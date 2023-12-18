@@ -1,0 +1,4 @@
+# 使用Connection类封装TCP连接 
+一个高并发服务器一般只会有一个Acceptor用于接受连接（也可以有多个），但可能会同时拥有成千上万个TCP连接，也就是成千上万个Connection类的实例，我们需要把这些TCP连接都保存起来。
+
+Connection封装了一个TCP连接，接受消息也在这里

@@ -1,4 +1,4 @@
-# 使用Acceptor类封装TCP连接
+# 使用Acceptor类封装accept
 Acceptor封装了之前Server里的accept、bind、listen等步骤
 
 之前写的Channel类封装了epoll事件  调用channel类的handleEvent函数会根据事件类型调用callback
