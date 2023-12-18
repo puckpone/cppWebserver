@@ -7,20 +7,19 @@
 #include <unistd.h>
 #include <cstdio>
 #include <cerrno>
+#include <Acceptor.h>
 
 #define READ_BUFFER 1024
 
 Server::Server(EventLoop *_loop) : loop(_loop){    
-    Socket *serv_sock = new Socket();
-    InetAddress *serv_addr = new InetAddress("127.0.0.1", 8888);
-    serv_sock->bind(serv_addr);
-    serv_sock->listen(); 
-    serv_sock->setnonblocking();
-       
-    Channel *servChannel = new Channel(loop, serv_sock->getFd());
-    std::function<void()> cb = std::bind(&Server::newConnection, this, serv_sock);
-    servChannel->setCallback(cb);
-    servChannel->enableReading();
+     
+    acceptor = new Acceptor(loop);
+    
+           /*std::placeholders::_1: This is a placeholder for the first argument of the function. 
+    In this case, it indicates that the Socket* parameter of newConnection will be provided 
+    when the std::function is called*/
+    std::function<void(Socket*)> cb = std::bind(&Server::newConnection, this, std::placeholders::_1);
+    acceptor->setNewConnectionCallback(cb);
 
 }
 
